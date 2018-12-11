@@ -10,7 +10,9 @@
 #define PY_LOCAL_AGGRESSIVE
 
 #include "Python.h"
-#include "pycore_state.h"
+#include "pycore_object.h"
+#include "pycore_pystate.h"
+#include "pycore_tupleobject.h"
 
 #include "code.h"
 #include "dictobject.h"
@@ -4662,7 +4664,7 @@ do_call_core(PyObject *func, PyObject *callargs, PyObject *kwdict)
             }
 
             C_TRACE(result, _PyCFunction_FastCallDict(func,
-                                                      &PyTuple_GET_ITEM(callargs, 1),
+                                                      &_PyTuple_ITEMS(callargs)[1],
                                                       nargs - 1,
                                                       kwdict));
             Py_DECREF(func);
@@ -5122,7 +5124,7 @@ getarray(long a[256])
             Py_DECREF(l);
             return NULL;
         }
-        PyList_SetItem(l, i, x);
+        PyList_SET_ITEM(l, i, x);
     }
     for (i = 0; i < 256; i++)
         a[i] = 0;
@@ -5144,7 +5146,7 @@ _Py_GetDXProfile(PyObject *self, PyObject *args)
             Py_DECREF(l);
             return NULL;
         }
-        PyList_SetItem(l, i, x);
+        PyList_SET_ITEM(l, i, x);
     }
     return l;
 #endif

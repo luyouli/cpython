@@ -20,7 +20,7 @@ IDLE has the following features:
 
 * coded in 100% pure Python, using the :mod:`tkinter` GUI toolkit
 
-* cross-platform: works mostly the same on Windows, Unix, and Mac OS X
+* cross-platform: works mostly the same on Windows, Unix, and macOS
 
 * Python shell window (interactive interpreter) with colorizing
   of code input, output, and error messages
@@ -40,13 +40,17 @@ Menus
 -----
 
 IDLE has two main window types, the Shell window and the Editor window.  It is
-possible to have multiple editor windows simultaneously.  Output windows, such
-as used for Edit / Find in Files, are a subtype of edit window.  They currently
-have the same top menu as Editor windows but a different default title and
-context menu.
+possible to have multiple editor windows simultaneously.  On Windows and
+Linux, each has its own top menu.  Each menu documented below indicates
+which window type it is associated with.
 
-IDLE's menus dynamically change based on which window is currently selected.
-Each menu documented below indicates which window type it is associated with.
+Output windows, such as used for Edit => Find in Files, are a subtype of editor
+window.  They currently have the same top menu but a different
+default title and context menu.
+
+On macOS, there is one application menu.  It dynamically changes according
+to the window currently selected.  It has an IDLE menu, and some entries
+described below are moved around to conform to Apple guidlines.
 
 File menu (Shell and Editor)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -263,7 +267,7 @@ Options menu (Shell and Editor)
 Configure IDLE
    Open a configuration dialog and change preferences for the following:
    fonts, indentation, keybindings, text color themes, startup windows and
-   size, additional help sources, and extensions (see below).  On OS X,
+   size, additional help sources, and extensions (see below).  On macOS,
    open the configuration dialog by selecting Preferences in the application
    menu.  To use a new built-in color theme (IDLE Dark) with older IDLEs,
    save it as a new custom theme.
@@ -320,7 +324,7 @@ on Help menu choices.
 Context Menus
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Open a context menu by right-clicking in a window (Control-click on OS X).
+Open a context menu by right-clicking in a window (Control-click on macOS).
 Context menus have the standard clipboard functions also on the Edit menu.
 
 Cut
@@ -377,7 +381,7 @@ Key bindings
 ^^^^^^^^^^^^
 
 In this section, 'C' refers to the :kbd:`Control` key on Windows and Unix and
-the :kbd:`Command` key on Mac OSX.
+the :kbd:`Command` key on macOS.
 
 * :kbd:`Backspace` deletes to the left; :kbd:`Del` deletes to the right
 
@@ -522,9 +526,9 @@ code interactively.  IDLE's Shell window also responds to the following keys.
   Command history
 
   * :kbd:`Alt-p` retrieves previous command matching what you have typed. On
-    OS X use :kbd:`C-p`.
+    macOS use :kbd:`C-p`.
 
-  * :kbd:`Alt-n` retrieves next. On OS X use :kbd:`C-n`.
+  * :kbd:`Alt-n` retrieves next. On macOS use :kbd:`C-n`.
 
   * :kbd:`Return` while on any previous command retrieves that command
 
@@ -791,6 +795,13 @@ The font preferences, highlighting, keys, and general preferences can be
 changed via Configure IDLE on the Option menu.  Keys can be user defined;
 IDLE ships with four built-in key sets. In addition, a user can create a
 custom key set in the Configure IDLE dialog under the keys tab.
+
+IDLE on macOS
+^^^^^^^^^^^^^
+
+Under System Preferences: Dock, one can set "Prefer tabs when opening
+documents" to "Always".  This setting is not compatible with the tk/tkinter
+GUI framework used by IDLE, and it breaks a few IDLE features.
 
 Extensions
 ^^^^^^^^^^
